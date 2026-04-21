@@ -1,0 +1,21 @@
+{
+  "name": "my-astro-blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.1.10",
+    "@astrojs/rss": "^4.0.18",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^6.1.8",
+    "tailwindcss": "^4.1.18"
+  },
+  "overrides": {
+    "vite": "^7.1.0"
+  }
+}

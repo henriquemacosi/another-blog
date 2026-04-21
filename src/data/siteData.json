@@ -1,0 +1,11 @@
+{
+  "title": "My Astro Blog",
+  "description": "My musings about the Astro framework",
+  "url": "https://meusite.com",
+  "inLanguage": "pt-BR",
+  "logo": "/images/logo.png",
+  "image": {
+    "src": "/images/image-default.jpg",
+    "alt": "Imagem padrão do My Astro Blog"
+  }
+}

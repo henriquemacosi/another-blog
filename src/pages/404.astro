@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro'; // Usando seu componente de ícone
+---
+
+<BaseLayout title="Página não encontrada" description="Ops! Não conseguimos encontrar o que você estava procurando.">
+  <div class="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">
+    <div class="bg-blue-50 p-6 rounded-full mb-8">
+       <span class="text-6xl font-black text-blue-600">404</span>
+    </div>
+
+    <h1 class="text-4xl font-black text-gray-900 mb-4 tracking-tighter">
+      Perdido no Espaço?
+    </h1>
+    
+    <p class="text-gray-600 max-w-md mb-10 leading-relaxed">
+      A página que você está procurando não existe ou foi movida para um novo endereço. Não se preocupe, acontece com os melhores!
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a 
+        href="/" 
+        class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
+      >
+        Voltar para a Home
+      </a>
+      
+      <a 
+        href="/blog" 
+        class="inline-flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-200 px-8 py-3 rounded-xl font-bold hover:bg-gray-50 transition-all"
+      >
+        Ver Últimos Posts
+      </a>
+    </div>
+
+    <div class="mt-16 text-sm text-gray-400">
+      Acha que isso é um erro nosso? <a href="mailto:contato@seusite.com" class="underline hover:text-blue-600">Avise a gente</a>.
+    </div>
+  </div>
+</BaseLayout>

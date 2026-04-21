@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const now = new Date();
+
+// Filtramos posts futuros logo na origem
+const allPosts = await getCollection('blog', ({ data }) => {
+  return !data.draft && data.pubDate <= now;
+});
+
+const categoryMap = allPosts.reduce((acc, post) => {
+  post.data.taxonomies.categories.forEach(cat => {
+    const catId = typeof cat === 'string' ? cat : cat.id;
+    if (!acc[catId]) acc[catId] = [];
+    acc[catId].push(post);
+  });
+  return acc;
+}, {});
+
+const categories = Object.keys(categoryMap).sort();
+---
+
+<BaseLayout 
+  title="Categorias do Blog" 
+  description="Explore as diferentes categorias do nosso blog."
+  >
+  
+  <h1 class="text-4xl font-bold mb-10">Categorias</h1>
+
+  <div class="space-y-12">
+    {categories.map(cat => (
+      <section>
+        <div class="flex items-center gap-3 mb-6">
+          <h2 class="text-2xl font-bold capitalize">
+            {/* Agora 'cat' já é a string limpa do ID */}
+            <a href={`/categories/${cat.toLowerCase()}/`} class="hover:underline text-blue-700">
+              {cat}
+            </a>
+          </h2>
+          <span class="bg-gray-100 border px-2 py-0.5 rounded-full text-sm text-gray-600">
+            {categoryMap[cat].length} {categoryMap[cat].length === 1 ? 'post' : 'posts'}
+          </span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {categoryMap[cat]
+            .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+            .slice(0, 3)
+            .map(post => (
+              <a href={`/blog/${post.id}/`} class="block group">
+                <div class="overflow-hidden rounded-lg mb-3">
+                   <img 
+                    src={post.data.image.url} 
+                    alt={post.data.image.alt} 
+                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                  />
+                </div>
+                <h3 class="font-semibold group-hover:text-blue-600 leading-tight">
+                  {post.data.title}
+                </h3>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

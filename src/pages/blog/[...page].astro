@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths({ paginate }) {
+  // 1. Pegamos a data atual no momento do build
+  const now = new Date();
+
+  // 2. Filtramos rascunhos E posts com data futura
+  const allPosts = await getCollection('blog', ({ data }) => {
+    return !data.draft && data.pubDate <= now;
+  });
+  
+  // 3. Ordenamos por data (mais recentes primeiro)
+  const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return paginate(sortedPosts, {
+    pageSize: 3, 
+  });
+}
+
+const { page } = Astro.props;
+---
+<BaseLayout 
+  title="Blog | Meu Blog Incrível" 
+  description="Explora todos os nossos artigos e tutoriais."
+  image={{
+    url: "/images/blog-og-default.jpg", 
+    alt: "Capa do Blog - Exploração de Tecnologia e Carreira"
+  }}
+>
+
+  <header class="mb-12 text-center mt-10">
+    <h1 class="text-5xl font-black text-gray-900 mb-4 tracking-tight">O Nosso Blog</h1>
+    <p class="text-xl text-gray-600">Explora todos os nossos artigos e tutoriais.</p>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    {page.data.map(post => (
+      <article class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-300">
+        
+        <a href={`/blog/${post.id}/`} class="overflow-hidden block aspect-video">
+          <img 
+            src={post.data.image.url} 
+            alt={post.data.image.alt} 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </a>
+
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-2 mb-3">
+            {post.data.taxonomies.categories.slice(0, 1).map(cat => {
+              // 1. Extraímos o ID (que é o nome do arquivo .yaml, ex: 'carreira')
+              const catId = typeof cat === 'string' ? cat : cat.id;
+              
+              // 2. Definimos o nome de exibição. 
+              // Se quiser que seja sempre "Carreira", o ideal é buscar no YAML, 
+              // mas por agora vamos apenas garantir que o código não quebre.
+              const displayName = typeof cat === 'string' ? cat : cat.id;
+
+              return (
+                <a 
+                  href={`/categories/${catId.toLowerCase()}/`} 
+                  class="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded"
+                >
+                  {displayName}
+                </a>
+              )
+            })}
+            <span class="text-gray-300">•</span>
+            <time class="text-xs text-gray-500">
+              {post.data.pubDate.toLocaleDateString('pt-BR')}
+            </time>
+          </div>
+
+          <h2 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 leading-tight">
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </h2>
+
+          <p class="text-gray-600 text-sm line-clamp-3 mb-6 flex-grow">
+            {post.data.description}
+          </p>
+
+          <a href={`/blog/${post.id}/`} class="text-sm font-bold text-gray-900 group-hover:text-blue-600 inline-flex items-center gap-2 transition-colors">
+            Ler Artigo <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <nav class="mt-16 flex justify-center items-center gap-4 border-t pt-10">
+    {page.url.prev && (
+      <a href={page.url.prev} class="px-5 py-2 rounded-full border border-gray-200 bg-white hover:border-blue-500 hover:text-blue-600 transition-all font-medium">
+        ← Recentes
+      </a>
+    )}
+
+    <div class="text-gray-500 font-medium px-4">
+      {page.currentPage} / {page.lastPage}
+    </div>
+
+    {page.url.next && (
+      <a href={page.url.next} class="px-5 py-2 rounded-full border border-gray-200 bg-white hover:border-blue-500 hover:text-blue-600 transition-all font-medium">
+        Mais Antigos →
+      </a>
+    )}
+  </nav>
+</BaseLayout>

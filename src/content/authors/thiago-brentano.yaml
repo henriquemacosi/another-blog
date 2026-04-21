@@ -1,0 +1,11 @@
+name: 'Thiago Brentano'
+bio: 'Desenvolvedor Full Stack apaixonado por código limpo e novas linguagens.'
+avatar:
+  url: '/images/authors/thiago-brentano.jpg'
+  alt: 'Foto de Thiago Brentano'
+social:
+  website: 'https://www.google.com'
+  linkedin: 'https://www.linkedin.com/in/'
+  instagram: 'https://www.instagram.com/'
+  twitter: 'https://twitter.com/'
+  github: 'https://github.com/'

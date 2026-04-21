@@ -1,0 +1,66 @@
+---
+import siteData from "../data/siteData.json";
+import jsonLDGenerator from "../scripts/jsonLD";
+
+const {
+  title = siteData.title,
+  description = siteData.description,
+  url = Astro.url,
+  image,
+  robots,
+  author,      // Esta prop já existe aqui
+  frontmatter,
+  type         // Adicione esta nova prop opcional
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE;
+
+// 1. Lógica de Imagem: Prioriza a imagem passada (Avatar ou Hero de Categoria)
+const imagePath = image?.url || image?.src || (typeof image === 'string' ? image : siteData.image.src);
+const imageUrl = new URL(imagePath, siteUrl).toString();
+const imageAlt = image?.alt || frontmatter?.image?.alt || siteData.image.alt;
+
+// 2. Lógica de Tipo de Página: Identifica se é autor
+// Se o tipo for passado explicitamente ou se a URL contiver /authors/
+const pageType = type || (frontmatter?.pubDate ? "post" : Astro.url.pathname.includes("/authors/") ? "author" : Astro.url.pathname === "/" ? "website" : "page");
+
+const jsonLD = jsonLDGenerator({
+  type: pageType,
+  post: frontmatter,
+  url,
+  author: author,
+  description,
+});
+---
+
+<!-- SEO -->
+<link rel="canonical" href={url} />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="My Astro Blog" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:url" content={imageUrl} />
+<meta
+  property="og:image:secure_url"
+  content={imageUrl}
+/>
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image:alt" content={imageAlt} />
+
+<!-- Twitter -->
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt}  />
+<meta name="twitter:domain" content={import.meta.env.SITE} />
+
+{robots && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- JSON LD -->
+<Fragment set:html={jsonLD} />

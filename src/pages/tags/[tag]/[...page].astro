@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths({ paginate }) {
+  const now = new Date();
+
+  // Filtragem essencial para posts publicados
+  const allPosts = await getCollection('blog', ({ data }) => {
+    return !data.draft && data.pubDate <= now;
+  });
+  
+  // 1. Obter todas as tags únicas (apenas dos posts já visíveis)
+  const uniqueTags = [...new Set(allPosts.flatMap(post => post.data.taxonomies.tags))];
+
+  return uniqueTags.flatMap(tag => {
+    // 2. Filtrar posts que contêm esta tag
+    const filteredPosts = allPosts
+      .filter(post => post.data.taxonomies.tags.includes(tag))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    return paginate(filteredPosts, {
+      params: { tag: tag.toLowerCase() },
+      pageSize: 10,
+    });
+  });
+}
+
+const { page } = Astro.props;
+const { tag } = Astro.params;
+---
+
+<BaseLayout title={`Posts com a tag #${tag}`} description={`Leia os posts marcados com a tag #${tag} no nosso blog.`}>
+    <header class="mb-12 border-b pb-8">
+      <a href="/tags" class="text-blue-600 hover:underline text-sm font-medium">← Voltar para o Índice de Tags</a>
+      <h1 class="text-4xl font-black mt-4 text-gray-900 uppercase">
+        <span class="text-blue-600">#</span>{tag}
+      </h1>
+      <p class="text-gray-600 mt-2">
+        Encontrados {page.total} posts com esta tag. 
+        Mostrando página {page.currentPage} de {page.lastPage}.
+      </p>
+    </header>
+
+    <section class="space-y-10">
+      {page.data.map(post => (
+        <article class="flex flex-col md:flex-row gap-6 group">
+          <a href={`/blog/${post.id}/`} class="w-full md:w-64 shrink-0 overflow-hidden rounded-xl">
+            <img 
+              src={post.data.image.url} 
+              alt={post.data.image.alt} 
+              class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" 
+            />
+          </a>
+          <div>
+            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+              <time>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
+              <span>•</span>
+              <span class="capitalize">{post.data.taxonomies.categories[0]}</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 group-hover:text-blue-600">
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            </h2>
+            <p class="text-gray-600 line-clamp-2 text-sm">{post.data.description}</p>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <nav class="mt-16 flex justify-between items-center border-t pt-8">
+      {page.url.prev ? (
+        <a href={page.url.prev} class="flex items-center gap-2 font-bold text-blue-600 hover:text-blue-800 transition-colors">
+          ← Anterior
+        </a>
+      ) : <div />}
+
+      <div class="text-gray-400 text-sm font-medium">
+        Página {page.currentPage} de {page.lastPage}
+      </div>
+
+      {page.url.next ? (
+        <a href={page.url.next} class="flex items-center gap-2 font-bold text-blue-600 hover:text-blue-800 transition-colors">
+          Próxima →
+        </a>
+      ) : <div />}
+    </nav>
+    </BaseLayout>

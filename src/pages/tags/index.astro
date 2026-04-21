@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const now = new Date();
+
+// Filtramos posts futuros e rascunhos logo na fonte
+const allPosts = await getCollection('blog', ({ data }) => {
+  return !data.draft && data.pubDate <= now;
+});
+
+// 1. Mapear todas as tags e contar ocorrências (apenas dos posts publicados)
+const tagCounts = allPosts.reduce((acc, post) => {
+  post.data.taxonomies.tags.forEach(tag => {
+    acc[tag] = (acc[tag] || 0) + 1;
+  });
+  return acc;
+}, {});
+
+// ... restante do código (sortedTags, groupedTags, alphabet) permanece igual
+const sortedTags = Object.keys(tagCounts).sort((a, b) => 
+  a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })
+);
+
+const groupedTags = sortedTags.reduce((acc, tag) => {
+  const firstLetter = tag.charAt(0).toUpperCase();
+  if (!acc[firstLetter]) acc[firstLetter] = [];
+  acc[firstLetter].push({ name: tag, count: tagCounts[tag] });
+  return acc;
+}, {});
+
+const alphabet = Object.keys(groupedTags).sort();
+---
+
+<BaseLayout title="Tags" description="Explore nosso conteúdo por tópicos organizados de A a Z.">
+  <header class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Tag Index</h1>
+    <p class="text-gray-600">Explore nosso conteúdo por tópicos organizados de A a Z.</p>
+  </header>
+
+  <nav class="flex flex-wrap gap-2 mb-12 p-4 bg-white rounded-lg shadow-sm">
+    {alphabet.map(letter => (
+      <a href={`#letter-${letter}`} class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 hover:bg-blue-600 hover:text-white transition-colors font-bold">
+        {letter}
+      </a>
+    ))}
+  </nav>
+
+  <div class="space-y-10">
+    {alphabet.map(letter => (
+      <section id={`letter-${letter}`} class="bg-white p-6 rounded-xl shadow-sm">
+        <h2 class="text-3xl font-black text-blue-600 border-b-2 border-blue-100 mb-6 pb-2">
+          {letter}
+        </h2>
+        
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {groupedTags[letter].map(tag => (
+            <li class="flex items-center gap-2">
+              <a 
+                href={`/tags/${tag.name.toLowerCase()}/`} 
+                class="text-gray-700 hover:text-blue-600 hover:underline transition-colors capitalize font-medium"
+              >
+                {tag.name}
+              </a>
+              <span class="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+                {tag.count}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <div class="h-20"></div>
+  </BaseLayout>

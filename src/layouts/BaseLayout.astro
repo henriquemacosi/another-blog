@@ -1,0 +1,76 @@
+---
+import '../styles/global.css'
+import Seo from "../components/Seo.astro"; // Importe o componente novo
+
+// src/layouts/BaseLayout.astro
+interface Props {
+  title?: string;
+  description?: string;
+  image?: { src: string; alt: string }; // Ajustado para bater com o Seo.astro
+  frontmatter?: any;
+  author?: any;
+  robots?: boolean;
+}
+
+const { 
+  title, 
+  description,
+  image,
+  frontmatter,
+  author,
+  robots
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+		<title>{ title }</title>
+		<meta name="description" content={description}>
+    <Seo 
+      {title}
+      {description}
+      url={Astro.url}
+      image={image}
+      {frontmatter}
+      {robots}
+      {author}
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style is:global>
+      /* Seus estilos permanecem iguais */
+      :root { --accent: #2563eb; }
+      html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+    <nav class="bg-white border-b sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="text-xl font-black tracking-tighter">ASTRO<span class="text-blue-600">BLOG</span></a>
+        <div class="flex gap-6 text-sm font-medium">
+          <a href="/blog/" class="hover:text-blue-600">Blog</a>
+          <a href="/categories/" class="hover:text-blue-600">Categorias</a>
+          <a href="/tags/" class="hover:text-blue-600">Tags</a>
+          <a href="/authors/" class="hover:text-blue-600">Equipe</a>
+          <a href="/rss.xml/" class="hover:text-blue-600">RSS</a>
+        </div>
+      </div>
+    </nav>
+    <main class="max-w-6xl mx-auto p-6">
+      <slot />
+    </main>
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+      <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
+        <p>© 2026 Astro Blog Architecture. Feito com Astro e Gemini.</p>
+      </div>
+    </footer>
+  </body>
+</html>

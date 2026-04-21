@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import Icon from '../../../components/Icon.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const now = new Date();
+  const allAuthors = await getCollection('authors');
+  
+  // Filtramos posts futuros e rascunhos para a paginação
+  const allPosts = await getCollection('blog', ({ data }) => {
+    return !data.draft && data.pubDate <= now;
+  });
+
+  return allAuthors.flatMap(author => {
+    const authorPosts = allPosts
+      .filter(post => post.data.authors.some(ref => ref.id === author.id))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    // Opcional: Se você não quiser gerar a página de um autor que ainda não tem posts publicados,
+    // você poderia adicionar um if (authorPosts.length === 0) return []; aqui.
+
+    return paginate(authorPosts, {
+      params: { author: author.id },
+      props: { authorData: author.data },
+      pageSize: 10,
+    });
+  });
+}
+
+const { page, authorData } = Astro.props;
+
+// 1. Garantimos que socialData seja um objeto. 
+// Se authorData.social for undefined (não preenchido no YAML), 
+// ele assume um objeto vazio {} para evitar erros nas funções seguintes.
+const socialData = authorData.social || {};
+
+// 2. Object.keys(socialData) extrai apenas os nomes das chaves, 
+// transformando { twitter: 'url...' } em ['twitter']
+const socialLinks = Object.keys(socialData)
+  
+  // 3. O .filter percorre cada chave (ex: 'twitter', 'github') 
+  // e verifica se existe um valor real dentro dela no objeto socialData.
+  // Se estiver vazio ou for null no YAML, ele remove do array.
+  .filter(key => socialData[key]) 
+
+  // 4. O .map transforma cada chave em um novo objeto formatado.
+  // De: 'twitter' 
+  // Para: { name: 'twitter', url: 'https://twitter.com/...' }
+  .map(key => ({
+    name: key,
+    url: socialData[key]
+  }));
+
+
+const { author } = Astro.params;
+---
+  <BaseLayout 
+  title={`Posts de ${authorData.name}`} 
+  description={authorData.bio}
+  image={authorData.avatar} 
+  author={authorData}  
+  type="author"        
+>
+    <header class="bg-white p-8 rounded-2xl shadow-sm mb-12 flex items-center gap-6">
+      <img src={authorData.avatar.url} class="w-24 h-24 rounded-full object-cover shadow-inner" alt="" />
+      <div>
+        <h1 class="text-3xl font-black">{authorData.name}</h1>
+        <p class="text-gray-600 mt-1 max-w-xl">{authorData.bio}</p>
+        { /* Renderizar links sociais somente se houver algum */ }
+        {/* 1. Abrimos a chave para a lógica condicional */}
+        {socialLinks.length > 0 && (
+          /* 2. A div flex envolve o map, e só existe se o array tiver itens */
+          <div class="flex flex-wrap gap-3 mt-6">
+            {socialLinks.map(link => (
+              <a 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label={link.name}
+                class="p-2 rounded-lg bg-gray-50 text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm border border-gray-100 flex items-center justify-center"
+              >
+                <Icon name={link.name} class="w-5 h-5 fill-current" />
+              </a>
+            ))}
+          </div>
+        )}       { /* 3. Fechamos a chave da lógica condicional */ }
+      </div>
+      
+    </header>
+
+    <h2 class="text-xl font-bold mb-6 text-gray-400 uppercase tracking-widest text-center">Publicações</h2>
+
+    <section class="grid gap-8">
+      {page.data.map(post => (
+        <article class="bg-white overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row">
+          <img src={post.data.image.url} class="w-full md:w-56 h-40 object-cover" alt="" />
+          <div class="p-6">
+             <span class="text-xs text-blue-600 font-bold uppercase tracking-tighter">
+                {
+                  typeof post.data.taxonomies.categories[0] === 'string' 
+                  ? post.data.taxonomies.categories[0] 
+                  : post.data.taxonomies.categories[0].id
+                }
+              </span>
+             <h3 class="text-xl font-bold mt-1 hover:text-blue-600">
+               <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+             </h3>
+             <p class="text-gray-500 text-sm mt-2 line-clamp-2">{post.data.description}</p>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <nav class="mt-12 flex justify-between border-t pt-8">
+      {page.url.prev ? <a href={page.url.prev} class="font-bold text-blue-600">← Posts Recentes</a> : <div />}
+      <span class="text-gray-400">Página {page.currentPage}</span>
+      {page.url.next ? <a href={page.url.next} class="font-bold text-blue-600">Posts Antigos →</a> : <div />}
+    </nav>
+    </BaseLayout>

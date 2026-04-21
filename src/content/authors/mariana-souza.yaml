@@ -1,0 +1,11 @@
+name: 'Mariana Souza'
+bio: 'Cozinheira profissional apaixonada por gastronomia brasileira e receitas práticas.'
+avatar:
+  url: '/images/authors/mariana-souza.jpg'
+  alt: 'Foto de Mariana Souza'
+social:
+  website: 'https://www.google.com'
+  linkedin: 'https://www.linkedin.com/in/'
+  instagram: 'https://www.instagram.com/'
+  twitter: 'https://twitter.com/'
+  github: 'https://github.com/'

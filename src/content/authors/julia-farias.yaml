@@ -1,0 +1,11 @@
+name: 'Júlia Farias'
+bio: 'Nômade digital e fotógrafa, documentando paisagens e culturas pelo globo.'
+avatar:
+  url: '/images/authors/julia-farias.jpg'
+  alt: 'Foto de Júlia Farias'
+social:
+  website: 'https://www.google.com'
+  linkedin: 'https://www.linkedin.com/in/'
+  instagram: 'https://www.instagram.com/'
+  twitter: 'https://twitter.com/'
+  github: 'https://github.com/'

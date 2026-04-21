@@ -1,0 +1,11 @@
+name: 'Lucas Lima'
+bio: 'Desenvolvedor Fullstack apaixonado por performance e Astro.'
+avatar:
+  url: '/images/authors/lucas-lima.jpg'
+  alt: 'Foto de Lucas Lima'
+social:
+  website: 'https://www.google.com'
+  linkedin: 'https://www.linkedin.com/in/'
+  instagram: 'https://www.instagram.com/'
+  twitter: 'https://twitter.com/'
+  github: 'https://github.com/'

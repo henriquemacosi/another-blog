@@ -1,0 +1,5 @@
+name: 'Carreira'
+description: 'Dicas de crescimento profissional e personal branding.'
+image:
+  url: '/images/categories/carreira-hero.jpg'
+  alt: 'Uma bússola sobre um teclado'
