@@ -56,7 +56,9 @@ const { tag } = Astro.params;
             <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
               <time>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
               <span>•</span>
-              <span class="capitalize">{post.data.taxonomies.categories[0]}</span>
+              {/* <span class="capitalize">{post.data.taxonomies.categories[0].id}</span> */}
+              <span class="capitalize">{post.data.taxonomies.categories[0]?.id || post.data.taxonomies.categories[0]}</span>
+              
             </div>
             <h2 class="text-2xl font-bold mb-2 group-hover:text-blue-600">
               <a href={`/blog/${post.id}/`}>{post.data.title}</a>
