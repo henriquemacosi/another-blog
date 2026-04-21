@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'http://localhost:4321',
+  site: 'https://test-blog.henriquemacosi.com',
   trailingSlash: 'ignore',
   devToolbar: {
     enabled: false,
