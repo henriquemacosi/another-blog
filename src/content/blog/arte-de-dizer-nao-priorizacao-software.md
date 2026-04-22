@@ -5,7 +5,7 @@ description: 'Como proteger o teu tempo e focar no que realmente gera impacto t√
 authors: ['beatriz-p-silveira']
 pubDate: 2026-03-22
 image:
-  url: '/images/blog/arte-de-dizer-nao-priorizacao-software.jpg'
+  url: '../../assets/images/blog/arte-de-dizer-nao-priorizacao-software.jpg'
   alt: 'Engenheiro a olhar para um quadro com muitas tarefas e a selecionar apenas uma'
 taxonomies:
   categories: ['Soft Skills']

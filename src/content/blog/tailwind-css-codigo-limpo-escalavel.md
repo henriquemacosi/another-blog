@@ -5,7 +5,7 @@ description: 'Dicas práticas de organização de componentes e uso de plugins p
 authors: ['lucas-lima']
 pubDate: 2026-03-20
 image:
-  url: '/images/blog/tailwind-css-codigo-limpo-escalavel.jpg'
+  url: '../../assets/images/blog/tailwind-css-codigo-limpo-escalavel.jpg'
   alt: 'Código ordenado em um monitor com o logotipo do Tailwind CSS'
 taxonomies:
   categories: ['Desenvolvimento']

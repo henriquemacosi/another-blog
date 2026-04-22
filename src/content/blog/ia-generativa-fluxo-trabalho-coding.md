@@ -5,7 +5,7 @@ description: 'Explora como as IAs generativas estão a transformar a forma como 
 authors: ['andre-c-drummond']
 pubDate: 2026-04-11
 image:
-  url: '/images/blog/ia-generativa-fluxo-trabalho-coding.jpg'
+  url: '../../assets/images/blog/ia-generativa-fluxo-trabalho-coding.jpg'
   alt: 'Representação abstrata de inteligência artificial e código'
 taxonomies:
   categories: ['Tendências']

@@ -5,7 +5,7 @@ description: 'Como identificar o esgotamento profissional antes que seja tarde e
 authors: ['beatriz-p-silveira']
 pubDate: 2026-03-23
 image:
-  url: '/images/blog/burnout-ti-sinais-alerta-prevenir.jpg'
+  url: '../../assets/images/blog/burnout-ti-sinais-alerta-prevenir.jpg'
   alt: 'Ilustração de uma bateria social e profissional quase vazia com um código ao fundo'
 taxonomies:
   categories: ['Soft Skills']

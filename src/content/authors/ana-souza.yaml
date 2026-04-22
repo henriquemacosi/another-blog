@@ -1,7 +1,7 @@
 name: 'Ana Souza'
 bio: 'Especialista em Inteligência Artificial e Ciência de Dados.'
 avatar:
-  url: '/images/authors/ana-souza.jpg'
+  url: '../../assets/images/authors/ana-souza.jpg'
   alt: 'Foto de Ana Souza'
 social:
   twitter: 'https://twitter.com/anasouza'

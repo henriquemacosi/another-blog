@@ -5,7 +5,7 @@ description: 'Descobre como construir uma marca pessoal forte para te destacares
 authors: ['clara-holanda']
 pubDate: 2026-04-07
 image:
-  url: '/images/blog/personal-branding-devs-ser-notado-mercado.jpg'
+  url: '../../assets/images/blog/personal-branding-devs-ser-notado-mercado.jpg'
   alt: 'Um programador a trabalhar na sua marca pessoal'
 taxonomies:
   categories: ['Carreira']

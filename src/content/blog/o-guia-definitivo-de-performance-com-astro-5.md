@@ -5,7 +5,7 @@ description: 'Aprenda as estratégias avançadas de ilhas de interatividade e pr
 authors: ['lucas-lima']
 pubDate: 2026-03-15
 image:
-  url: '/images/blog/guia-definitivo-performance-astro-5.jpg'
+  url: '../../assets/images/blog/guia-definitivo-performance-astro-5.jpg'
   alt: 'Painel de controle com indicadores de velocidade e foguete decolando'
 taxonomies:
   categories: ['Desenvolvimento']

@@ -5,7 +5,7 @@ description: 'Entende a filosofia Mobile-First e como ela ajuda a criar produtos
 authors: ['marcos-paulo-estrela']
 pubDate: 2026-04-05
 image:
-  url: '/images/blog/mobile-first-design-por-que-deves-comecar.jpg'
+  url: '../../assets/images/blog/mobile-first-design-por-que-deves-comecar.jpg'
   alt: 'Designer a trabalhar num layout mobile num smartphone'
 taxonomies:
   categories: ['Design', 'Mobile']

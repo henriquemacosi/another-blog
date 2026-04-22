@@ -5,7 +5,7 @@ description: 'Uma análise honesta sobre trade-offs, curva de aprendizado e os g
 authors: ['lucas-lima']
 pubDate: 2026-03-25
 image:
-  url: '/images/blog/migrando-react-para-astro-2026.jpg'
+  url: '../../assets/images/blog/migrando-react-para-astro-2026.jpg'
   alt: 'Logotipos de React e Astro em lados opostos de uma balança'
 taxonomies:
   categories: ['Desenvolvimento']

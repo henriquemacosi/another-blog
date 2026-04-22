@@ -1,7 +1,7 @@
 name: 'Beatriz P. Silveira'
 bio: 'Jornalista e podcaster, sempre em busca de boas histórias pelo mundo afora.'
 avatar:
-  url: '/images/authors/beatriz-p-silveira.jpg'
+  url: '../../assets/images/authors/beatriz-p-silveira.jpg'
   alt: 'Foto de Beatriz P. Silveira'
 social:
   website: 'https://www.google.com'

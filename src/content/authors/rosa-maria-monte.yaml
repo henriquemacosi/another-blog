@@ -1,7 +1,7 @@
 name: 'Rosa Maria Monte'
 bio: 'Poeta e professora de literatura, explorando a arte das palavras em cada verso.'
 avatar:
-  url: '/images/authors/rosa-maria-monte.jpg'
+  url: '../../assets/images/authors/rosa-maria-monte.jpg'
   alt: 'Foto de Rosa Maria Monte'
 social:
   website: 'https://www.google.com'

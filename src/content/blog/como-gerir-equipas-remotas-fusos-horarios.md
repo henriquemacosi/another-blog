@@ -5,7 +5,7 @@ description: 'Estratégias para manter a produtividade e o bem-estar em equipas 
 authors: ['beatriz-p-silveira']
 pubDate: 2026-03-21
 image:
-  url: '/images/blog/como-gerir-equipas-remotas-fusos-horarios.jpg'
+  url: '../../assets/images/blog/como-gerir-equipas-remotas-fusos-horarios.jpg'
   alt: 'Pessoa a trabalhar num portátil com múltiplos relógios de fusos horários ao fundo'
 taxonomies:
   categories: ['Carreira']

@@ -1,7 +1,7 @@
 name: 'João Silva'
 bio: 'Empreendedor e mentor de startups, focado em inovação e gestão de pessoas.'
 avatar:
-  url: '/images/authors/joao-silva.jpg'
+  url: '../../assets/images/authors/joao-silva.jpg'
   alt: 'Foto de João Silva'
 social:
   website: 'https://www.google.com'

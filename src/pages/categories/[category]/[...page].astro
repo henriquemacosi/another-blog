@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths({ paginate }) {
@@ -52,11 +53,13 @@ const { page, categoryData } = Astro.props;
     <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-6 bg-gray-900">
       <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-6 bg-gray-900">
         {categoryData.image && (
-          <img 
-            src={categoryData.image.url} 
-            alt={categoryData.image.alt} 
-            class="absolute inset-0 w-full h-full object-cover" 
-          />
+          <Image 
+          src={categoryData.image.url} 
+          alt={categoryData.image.alt}
+          width={1200} 
+          height={630}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
         )}
       </div>
       <div class="absolute inset-0 flex flex-col justify-end p-8">
@@ -80,10 +83,13 @@ const { page, categoryData } = Astro.props;
     {page.data.map(post => (
       <article class="flex flex-col md:flex-row gap-6 items-start group">
         <div class="w-full md:w-64 h-40 overflow-hidden rounded-lg">
-           <img 
+           <Image 
             src={post.data.image.url} 
             alt={post.data.image.alt}
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+            width={400}  // Tamanho menor para a listagem
+            height={225}
+            format="webp"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         </div>
         <div class="flex-1">

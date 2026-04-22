@@ -5,7 +5,7 @@ description: 'Uma análise profunda sobre a evolução do React Native e como el
 authors: ['marcos-paulo-estrela']
 pubDate: 2026-04-03
 image:
-  url: '/images/blog/react-native-2026-estado-atual-ecossistema.jpg'
+  url: '../../assets/images/blog/react-native-2026-estado-atual-ecossistema.jpg'
   alt: 'Logótipo do React Native num ecrã de telemóvel'
 taxonomies:
   categories: ['Mobile']

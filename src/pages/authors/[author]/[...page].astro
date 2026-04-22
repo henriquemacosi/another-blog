@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Icon from '../../../components/Icon.astro';
 
 export async function getStaticPaths({ paginate }) {
@@ -53,7 +54,14 @@ const socialLinks = Object.keys(socialData)
   }));
 
 
+// const { author } = Astro.params;
+
+
 const { author } = Astro.params;
+const authorEntry = await getEntry('authors', author);
+const { avatar, name, bio } = authorEntry.data; // Desestrutura aqui também
+
+
 ---
   <BaseLayout 
   title={`Posts de ${authorData.name}`} 
@@ -63,10 +71,19 @@ const { author } = Astro.params;
   type="author"        
 >
     <header class="bg-white p-8 rounded-2xl shadow-sm mb-12 flex items-center gap-6">
-      <img src={authorData.avatar.url} class="w-24 h-24 rounded-full object-cover shadow-inner" alt="" />
+     
+     
+          <Image 
+  src={avatar.url} 
+  alt={avatar.alt}
+  width={200}  
+  height={200}
+  format="webp"
+  class="w-24 h-24 rounded-full object-cover shadow-inner"
+/>
       <div>
-        <h1 class="text-3xl font-black">{authorData.name}</h1>
-        <p class="text-gray-600 mt-1 max-w-xl">{authorData.bio}</p>
+        <h1 class="text-3xl font-black">{name}</h1>
+        <p class="text-gray-600 mt-1 max-w-xl">{bio}</p>
         { /* Renderizar links sociais somente se houver algum */ }
         {/* 1. Abrimos a chave para a lógica condicional */}
         {socialLinks.length > 0 && (
@@ -92,29 +109,45 @@ const { author } = Astro.params;
     <h2 class="text-xl font-bold mb-6 text-gray-400 uppercase tracking-widest text-center">Publicações</h2>
 
     <section class="grid gap-8">
-      {page.data.map(post => (
-        <article class="bg-white overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row">
-          <img src={post.data.image.url} class="w-full md:w-56 h-40 object-cover" alt="" />
-          <div class="p-6">
-             <span class="text-xs text-blue-600 font-bold uppercase tracking-tighter">
-                {
-                  typeof post.data.taxonomies.categories[0] === 'string' 
-                  ? post.data.taxonomies.categories[0] 
-                  : post.data.taxonomies.categories[0].id
-                }
-              </span>
-             <h3 class="text-xl font-bold mt-1 hover:text-blue-600">
-               <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-             </h3>
-             <p class="text-gray-500 text-sm mt-2 line-clamp-2">{post.data.description}</p>
-          </div>
-        </article>
-      ))}
+      {page.data.map(post => {
+        const { title, image, taxonomies, description } = post.data;
+        return (
+          <article class="bg-white overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row">
+            
+
+            <Image 
+              src={image.url} 
+              alt={image.alt}
+              width={400}
+              height={225}
+              format="webp"
+              class="w-full md:w-56 h-40 object-cover"
+            />
+            <div class="p-6">
+              <span class="text-xs text-blue-600 font-bold uppercase tracking-tighter">
+                  {
+                    typeof taxonomies.categories[0] === 'string' 
+                    ? taxonomies.categories[0] 
+                    : taxonomies.categories[0].id
+                  }
+                </span>
+              <h3 class="text-xl font-bold mt-1 hover:text-blue-600">
+                <a href={`/blog/${post.id}/`}>{title}</a>
+              </h3>
+              <p class="text-gray-500 text-sm mt-2 line-clamp-2">{description}</p>
+            </div>
+          </article>
+          )
+      })}
     </section>
 
     <nav class="mt-12 flex justify-between border-t pt-8">
-      {page.url.prev ? <a href={page.url.prev} class="font-bold text-blue-600">← Posts Recentes</a> : <div />}
-      <span class="text-gray-400">Página {page.currentPage}</span>
-      {page.url.next ? <a href={page.url.next} class="font-bold text-blue-600">Posts Antigos →</a> : <div />}
-    </nav>
+  {page.url.prev ? <a href={page.url.prev} class="font-bold text-blue-600">← Recentes</a> : <div />}
+  
+  <span class="text-gray-400">
+    Página {page.currentPage} de {page.lastPage}
+  </span>
+  
+  {page.url.next ? <a href={page.url.next} class="font-bold text-blue-600">Antigos →</a> : <div />}
+</nav>
     </BaseLayout>

@@ -5,7 +5,7 @@ description: 'Analisamos o progresso do Flutter no browser e em que cenários el
 authors: ['marcos-paulo-estrela']
 pubDate: 2026-04-04
 image:
-  url: '/images/blog/flutter-para-web-alternativa-viavel.jpg'
+  url: '../../assets/images/blog/flutter-para-web-alternativa-viavel.jpg'
   alt: 'Logótipo do Flutter renderizado num browser desktop'
 taxonomies:
   categories: ['Mobile', 'Web']

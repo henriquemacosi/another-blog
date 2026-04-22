@@ -5,7 +5,7 @@ description: 'Descobre como otimizar o teu blog de tecnologia para os motores de
 authors: ['clara-holanda']
 pubDate: 2026-04-10
 image:
-  url: '/images/blog/estrategias-seo-blogs-tecnologia.jpg'
+  url: '../../assets/images/blog/estrategias-seo-blogs-tecnologia.jpg'
   alt: 'Gráficos de performance e SEO num ecrã'
 taxonomies:
   categories: ['Marketing']

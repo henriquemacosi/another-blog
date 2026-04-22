@@ -5,7 +5,7 @@ description: 'Aprenda a extrair medidas, cores e assets do Figma de forma eficie
 authors: ['ana-souza']
 pubDate: 2026-04-15
 image:
-  url: '/images/blog/figma-para-programadores-guia-inspecao.jpg'
+  url: '../../assets/images/blog/figma-para-programadores-guia-inspecao.jpg'
   alt: 'Cursor do mouse selecionando um elemento dentro do software Figma'
 taxonomies:
   categories: ['Design']

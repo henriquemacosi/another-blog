@@ -5,7 +5,7 @@ description: 'Aprende a aplicar os princípios do Kanban na tua vida pessoal par
 authors: ['julia-farias']
 pubDate: 2026-04-01
 image:
-  url: '/images/blog/metodo-kanban-organizando-fluxo-trabalho-pessoal.jpg'
+  url: '../../assets/images/blog/metodo-kanban-organizando-fluxo-trabalho-pessoal.jpg'
   alt: 'Quadro Kanban com post-its coloridos'
 taxonomies:
   categories: ['Produtividade']

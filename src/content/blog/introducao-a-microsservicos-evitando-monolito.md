@@ -5,7 +5,7 @@ description: 'Os conceitos fundamentais da arquitetura de microsserviços e como
 authors: ['ricardo-de-almeida']
 pubDate: 2026-03-27
 image:
-  url: '/images/blog/introducao-a-microsservicos-evitando-monolito.jpg'
+  url: '../../assets/images/blog/introducao-a-microsservicos-evitando-monolito.jpg'
   alt: 'Desenho de vários pequenos cubos interligados de forma organizada'
 taxonomies:
   categories: ['Arquitetura']

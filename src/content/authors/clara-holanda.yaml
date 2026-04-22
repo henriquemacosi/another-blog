@@ -1,7 +1,7 @@
 name: 'Clara Holanda'
 bio: 'Arquiteta focada em design sustentável e decoração minimalista para casas urbanas.'
 avatar:
-  url: '/images/authors/clara-holanda.jpg'
+  url: '../../assets/images/authors/clara-holanda.jpg'
   alt: 'Foto de Clara Holanda'
 social:
   website: 'https://www.google.com'

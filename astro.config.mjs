@@ -2,21 +2,34 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://test-blog.henriquemacosi.com',
+
+  site: 'https://test-blog.henriquemacosi.com/',
   trailingSlash: 'ignore',
+
   devToolbar: {
     enabled: false,
   },
 
   // 2. Configure o adaptador
-  output: 'static', // Use 'hybrid' se quiser algumas páginas com SSR (ex: busca em tempo real)
+  // Use 'hybrid' se quiser algumas páginas com SSR (ex: busca em tempo real)
+  output: 'static',
+
+  image: {
+    // Isso garante que o Astro use o Sharp (ou Squoosh) no build
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
+
   adapter: cloudflare({
+    imageService: 'passthrough',
     // Configura o proxy para desenvolvimento local
     platformProxy: {
       enabled: true,
@@ -29,8 +42,18 @@ export default defineConfig({
       },
     },
   }),
+
   // 3. Recomendado para Cloudflare Pages
   build: {
     format: 'directory',
   },
+
+  integrations: [
+    sitemap(/* {
+      // Opcional: Filtrar páginas que você não quer no Google
+      filter: (page) => !page.includes('/secret-page'),
+      // Opcional: Adicionar páginas externas se necessário
+      customPages: ['https://henriquemacosi.com/portfolio'],
+    } */),
+  ],
 });

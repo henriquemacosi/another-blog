@@ -15,8 +15,25 @@ const {
 
 const siteUrl = import.meta.env.SITE;
 
-// 1. Lógica de Imagem: Prioriza a imagem passada (Avatar ou Hero de Categoria)
-const imagePath = image?.url || image?.src || (typeof image === 'string' ? image : siteData.image.src);
+// 1. Lógica de Imagem Robusta
+let imagePath = siteData.image.src; // Fallback padrão
+
+if (image) {
+  // Se image.url for o objeto do Astro (Content Layer)
+  if (image.url && typeof image.url === 'object' && image.url.src) {
+    imagePath = image.url.src;
+  } 
+  // Se image for o objeto direto (ex: vindo de outros schemas)
+  else if (image.src) {
+    imagePath = image.src;
+  }
+  // Se for uma string direta (public folder)
+  else if (typeof image === 'string') {
+    imagePath = image;
+  }
+}
+
+// Criar a URL absoluta para as meta tags
 const imageUrl = new URL(imagePath, siteUrl).toString();
 const imageAlt = image?.alt || frontmatter?.image?.alt || siteData.image.alt;
 

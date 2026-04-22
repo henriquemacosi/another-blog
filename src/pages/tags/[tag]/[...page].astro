@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths({ paginate }) {
   const now = new Date();
@@ -46,10 +47,13 @@ const { tag } = Astro.params;
       {page.data.map(post => (
         <article class="flex flex-col md:flex-row gap-6 group">
           <a href={`/blog/${post.id}/`} class="w-full md:w-64 shrink-0 overflow-hidden rounded-xl">
-            <img 
+            <Image 
               src={post.data.image.url} 
-              alt={post.data.image.alt} 
-              class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" 
+              alt={post.data.image.alt}
+              width={400}  // Tamanho menor para a listagem
+              height={225}
+              format="webp"
+              class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </a>
           <div>

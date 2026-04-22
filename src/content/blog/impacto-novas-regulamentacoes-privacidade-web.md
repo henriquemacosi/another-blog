@@ -5,7 +5,7 @@ description: 'Entende como as mudanças nas leis de privacidade e o fim dos cook
 authors: ['andre-c-drummond']
 pubDate: 2026-04-13
 image:
-  url: '/images/blog/impacto-novas-regulamentacoes-privacidade-web.jpg'
+  url: '../../assets/images/blog/impacto-novas-regulamentacoes-privacidade-web.jpg'
   alt: 'Símbolo de cadeado e proteção de dados digitais'
 taxonomies:
   categories: ['Segurança']

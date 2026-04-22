@@ -5,7 +5,7 @@ description: 'Pequenas animações e feedbacks visuais que transformam uma inter
 authors: ['ana-souza']
 pubDate: 2026-03-20
 image:
-  url: '/images/blog/micro-interacoes-melhoria-ux.jpg'
+  url: '../../assets/images/blog/micro-interacoes-melhoria-ux.jpg'
   alt: "Animação de um botão de 'like' mudando de cor e forma"
 taxonomies:
   categories: ['Design']

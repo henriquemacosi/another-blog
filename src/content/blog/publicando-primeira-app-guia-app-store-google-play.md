@@ -5,7 +5,7 @@ description: 'Tudo o que precisas de saber para navegar no processo de submissã
 authors: ['marcos-paulo-estrela']
 pubDate: 2026-04-06
 image:
-  url: '/images/blog/publicando-primeira-app-guia-app-store-google-play.jpg'
+  url: '../../assets/images/blog/publicando-primeira-app-guia-app-store-google-play.jpg'
   alt: 'Logótipos da App Store e Google Play Store num ecrã'
 taxonomies:
   categories: ['Mobile']

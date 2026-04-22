@@ -5,7 +5,7 @@ description: 'Aprende a transformar o Notion num sistema de gestão de conhecime
 authors: ['julia-farias']
 pubDate: 2026-02-29
 image:
-  url: '/images/blog/configurando-notion-segundo-cerebro-estudos.jpg'
+  url: '../../assets/images/blog/configurando-notion-segundo-cerebro-estudos.jpg'
   alt: 'Interface do Notion com diversos blocos de notas e organização'
 taxonomies:
   categories: ['Produtividade']

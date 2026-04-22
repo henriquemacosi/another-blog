@@ -5,7 +5,7 @@ description: 'Explorando o mundo além das tabelas e relações: quando e porque
 authors: ['ricardo-de-almeida']
 pubDate: 2026-03-28
 image:
-  url: '/images/blog/bases-de-dados-nosql-quando-relacional-nao-suficiente.jpg'
+  url: '../../assets/images/blog/bases-de-dados-nosql-quando-relacional-nao-suficiente.jpg'
   alt: 'Representação visual de differentes tipos de armazenamento de dados: documentos, grafos e colunas'
 taxonomies:
   categories: ['Backend']

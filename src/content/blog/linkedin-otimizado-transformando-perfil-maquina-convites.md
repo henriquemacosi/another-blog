@@ -5,7 +5,7 @@ description: 'Aprende táticas práticas para otimizar o teu perfil no LinkedIn 
 authors: ['clara-holanda']
 pubDate: 2026-04-08
 image:
-  url: '/images/blog/linkedin-otimizado-transformando-perfil-maquina-convites.jpg'
+  url: '../../assets/images/blog/linkedin-otimizado-transformando-perfil-maquina-convites.jpg'
   alt: 'Interface do LinkedIn num computador'
 taxonomies:
   categories: ['Carreira']

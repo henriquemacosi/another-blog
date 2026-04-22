@@ -5,7 +5,7 @@ description: 'A evolução de um engenheiro de software não se mede apenas em l
 authors: ['beatriz-p-silveira']
 pubDate: 2026-03-24
 image:
-  url: '/images/blog/do-junior-ao-senior-o-que-realmente-muda.jpg'
+  url: '../../assets/images/blog/do-junior-ao-senior-o-que-realmente-muda.jpg'
   alt: 'Uma escada que vai de um ecrã de computador simples até uma rede complexa de conexões'
 taxonomies:
   categories: ['Carreira']

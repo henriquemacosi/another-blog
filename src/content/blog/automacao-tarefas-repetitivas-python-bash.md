@@ -5,7 +5,7 @@ description: 'Descobre como libertar o teu tempo automatizando processos quotidi
 authors: ['julia-farias']
 pubDate: 2026-03-30
 image:
-  url: '/images/blog/automacao-tarefas-repetitivas-python-bash.jpg'
+  url: '../../assets/images/blog/automacao-tarefas-repetitivas-python-bash.jpg'
   alt: 'Linhas de código Python e terminal Bash'
 taxonomies:
   categories: ['Desenvolvimento']

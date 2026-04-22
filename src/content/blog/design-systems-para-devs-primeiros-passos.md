@@ -5,7 +5,7 @@ description: 'Entenda os fundamentos de componentes, tokens e documentação par
 authors: ['ana-souza']
 pubDate: 2026-04-05
 image:
-  url: '/images/blog/design-systems-para-devs-primeiros-passos.jpg'
+  url: '../../assets/images/blog/design-systems-para-devs-primeiros-passos.jpg'
   alt: 'Interface de software com biblioteca de componentes organizados'
 taxonomies:
   categories: ['Design']

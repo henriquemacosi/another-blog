@@ -5,7 +5,7 @@ description: 'Uma análise comparativa entre os dois modelos mais populares de c
 authors: ['ricardo-de-almeida']
 pubDate: 2026-03-25
 image:
-  url: '/images/blog/apis-rest-vs-graphql-quando-escolher.jpg'
+  url: '../../assets/images/blog/apis-rest-vs-graphql-quando-escolher.jpg'
   alt: 'Ilustração comparando uma estrutura rígida (REST) com uma flexível e interligada (GraphQL)'
 taxonomies:
   categories: ['Backend']

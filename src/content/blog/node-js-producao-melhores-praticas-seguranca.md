@@ -5,7 +5,7 @@ description: 'Como proteger a tua aplicação Node.js contra as vulnerabilidades
 authors: ['ricardo-de-almeida']
 pubDate: 2026-03-26
 image:
-  url: '/images/blog/node-js-producao-melhores-praticas-seguranca.jpg'
+  url: '../../assets/images/blog/node-js-producao-melhores-praticas-seguranca.jpg'
   alt: 'Um cadeado digital sobreposto a um código JavaScript'
 taxonomies:
   categories: ['Backend']

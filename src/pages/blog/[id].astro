@@ -2,6 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, getEntry, render } from 'astro:content'; // Importamos o 'render'
 
+import { Image } from 'astro:assets';
+
+
+
 export async function getStaticPaths() {
   const now = new Date();
   const posts = await getCollection('blog', ({ data }) => {
@@ -51,11 +55,17 @@ const authors = await Promise.all(
         {post.data.title}
       </h1>
 
-      <img 
-        src={post.data.image.url} 
-        alt={post.data.image.alt} 
-        class="w-full h-[450px] object-cover rounded-xl mb-6 shadow-md"
-      />
+      
+    <Image 
+      src={post.data.image.url} 
+      alt={post.data.image.alt}
+      width={1200}
+      height={630}
+      format="webp"
+      quality="high"
+      class="w-full h-[450px] object-cover rounded-xl mb-6 shadow-md"
+    />
+  
       
       <div class="flex flex-col gap-4 text-gray-600 border-b pb-6">
         <div class="flex flex-wrap items-center gap-4 text-sm">

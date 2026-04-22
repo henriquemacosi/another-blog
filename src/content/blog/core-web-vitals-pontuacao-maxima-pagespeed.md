@@ -5,7 +5,7 @@ description: 'Tudo o que você precisa saber sobre LCP, INP e CLS para garantir 
 authors: ['lucas-lima']
 pubDate: 2026-03-30
 image:
-  url: '/images/blog/core-web-vitals-pontuacao-maxima-pagespeed.jpg'
+  url: '../../assets/images/blog/core-web-vitals-pontuacao-maxima-pagespeed.jpg'
   alt: 'Gráfico do Google PageSpeed mostrando 100 pontos em performance'
 taxonomies:
   categories: ['Desenvolvimento']

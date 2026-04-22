@@ -5,7 +5,7 @@ description: 'Descobre o passo a passo para começares a contribuir para projeto
 authors: ['andre-c-drummond']
 pubDate: 2026-04-14
 image:
-  url: '/images/blog/contribuindo-open-source-guia-primeira-pr.jpg'
+  url: '../../assets/images/blog/contribuindo-open-source-guia-primeira-pr.jpg'
   alt: 'Logótipo do Git e colaboração em código'
 taxonomies:
   categories: ['Comunidade']

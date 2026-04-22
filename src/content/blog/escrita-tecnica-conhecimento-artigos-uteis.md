@@ -5,7 +5,7 @@ description: 'Aprende os fundamentos da escrita técnica e descobre como partilh
 authors: ['clara-holanda']
 pubDate: 2026-04-09
 image:
-  url: '/images/blog/escrita-tecnica-conhecimento-artigos-uteis.jpg'
+  url: '../../assets/images/blog/escrita-tecnica-conhecimento-artigos-uteis.jpg'
   alt: 'Alguém a escrever um post de blog'
 taxonomies:
   categories: ['Educação']

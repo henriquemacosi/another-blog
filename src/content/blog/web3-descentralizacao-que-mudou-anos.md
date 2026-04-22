@@ -5,7 +5,7 @@ description: 'Uma análise sobre o estado atual da Web3 e como a descentralizaç
 authors: ['andre-c-drummond']
 pubDate: 2026-04-12
 image:
-  url: '/images/blog/web3-descentralizacao-que-mudou-anos.jpg'
+  url: '../../assets/images/blog/web3-descentralizacao-que-mudou-anos.jpg'
   alt: 'Visualização de uma rede descentralizada'
 taxonomies:
   categories: ['Tendências']

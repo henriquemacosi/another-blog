@@ -1,7 +1,7 @@
 name: 'João Vítor'
 bio: 'Personal trainer e entusiasta de um estilo de vida saudável e alta performance.'
 avatar:
-  url: '/images/authors/joao-vitor.jpg'
+  url: '../../assets/images/authors/joao-vitor.jpg'
   alt: 'Foto de João Vítor'
 social:
   website: 'https://www.google.com'

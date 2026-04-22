@@ -1,7 +1,7 @@
 name: 'Letícia Vasconcelos'
 bio: 'Especialista em marketing digital e estratégias de crescimento para pequenas empresas.'
 avatar:
-  url: '/images/authors/leticia-vasconcelos.jpg'
+  url: '../../assets/images/authors/leticia-vasconcelos.jpg'
   alt: 'Foto de Letícia Vasconcelos'
 social:
   website: 'https://www.google.com'

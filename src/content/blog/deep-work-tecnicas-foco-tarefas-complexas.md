@@ -5,7 +5,7 @@ description: 'Explora o conceito de Trabalho Focado e aprende estratégias para 
 authors: ['julia-farias']
 pubDate: 2026-04-02
 image:
-  url: '/images/blog/deep-work-tecnicas-foco-tarefas-complexas.jpg'
+  url: '../../assets/images/blog/deep-work-tecnicas-foco-tarefas-complexas.jpg'
   alt: 'Pessoa concentrada a trabalhar num ambiente calmo'
 taxonomies:
   categories: ['Produtividade']

@@ -5,7 +5,7 @@ description: 'Como tornar o seu site utilizável por todos com práticas simples
 authors: ['ana-souza']
 pubDate: 2026-04-10
 image:
-  url: '/images/blog/acessibilidade-web-ajustes-impacto.jpg'
+  url: '../../assets/images/blog/acessibilidade-web-ajustes-impacto.jpg'
   alt: 'Pessoa utilizando um leitor de tela em um computador'
 taxonomies:
   categories: ['Design']
