@@ -46,6 +46,7 @@ export default defineConfig({
   // 3. Recomendado para Cloudflare Pages
   build: {
     format: 'directory',
+    assets: '_images',
   },
 
   integrations: [
