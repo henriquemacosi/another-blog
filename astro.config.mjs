@@ -21,15 +21,15 @@ export default defineConfig({
   // Use 'hybrid' se quiser algumas páginas com SSR (ex: busca em tempo real)
   output: 'static',
 
-  image: {
+  /* image: {
     // Isso garante que o Astro use o Sharp (ou Squoosh) no build
     service: {
       entrypoint: 'astro/assets/services/sharp',
     },
-  },
+  }, */
 
   adapter: cloudflare({
-    imageService: 'passthrough',
+    imageService: 'compile',
     // Configura o proxy para desenvolvimento local
     platformProxy: {
       enabled: true,
